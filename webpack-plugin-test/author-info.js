@@ -5,7 +5,7 @@ class AuthorInfoPlugin {
     }
     apply(compiler) {
         compiler.plugin('emit', function(compilation, callback) {
-            console.log('emit:', compilation.assets['index.html']);
+            console.log('emit:', compilation.assets);
             callback();
         });
     }

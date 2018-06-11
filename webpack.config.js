@@ -1,6 +1,8 @@
 const { WebPlugin } = require('web-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const AuthorInfoPlugin = require('./webpack-plugin-test/author-info.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // const path = require('path');
 
 // function resolve (dir) {
@@ -43,16 +45,16 @@ module.exports = {
         // proxy: c.prox
     },
     plugins: [
-        // new webpack.optimization.splitChunks({
-        //     names: ['vendor', 'manifest']
+        // new WebPlugin({
+        //     filename: 'index.html',
+        //     requires: ['app', 'vendor']
         // }),
-        new WebPlugin({
-            filename: 'index.html',
-            requires: ['app', 'vendor']
-        }),
         new VueLoaderPlugin(),
         new AuthorInfoPlugin({
             name: 'crowphy'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html'
         })
     ],
     optimization: {
