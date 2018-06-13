@@ -1,7 +1,7 @@
 const { WebPlugin } = require('web-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const AuthorInfoPlugin = require('./webpack-plugin-test/author-info.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InjectDivPlugin = require('./div-webpack-plugin/index');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // const path = require('path');
 
@@ -17,7 +17,10 @@ module.exports = {
         filename: '[name].js'
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json']
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            vue: 'vue/dist/vue.common'
+        }
     },
     module: {
         rules: [
@@ -45,17 +48,18 @@ module.exports = {
         // proxy: c.prox
     },
     plugins: [
-        // new WebPlugin({
-        //     filename: 'index.html',
-        //     requires: ['app', 'vendor']
-        // }),
-        new VueLoaderPlugin(),
-        new AuthorInfoPlugin({
-            name: 'crowphy'
+        new WebPlugin({
+            filename: 'index.html',
+            requires: ['app', 'vendor'],
+            inject: true
         }),
-        new HtmlWebpackPlugin({
-            filename: 'index.html'
-        })
+        new VueLoaderPlugin(),
+        new InjectDivPlugin({
+            eleId: 'app'
+        }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'index.html'
+        // })
     ],
     optimization: {
         splitChunks: {
