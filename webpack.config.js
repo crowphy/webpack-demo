@@ -1,6 +1,7 @@
 const { WebPlugin } = require('web-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const InjectDivPlugin = require('./div-webpack-plugin/index');
+const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // const path = require('path');
@@ -32,6 +33,11 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                loader: path.resolve('test-webpack-loader'),
+                options: {}
             }
         ],
     },

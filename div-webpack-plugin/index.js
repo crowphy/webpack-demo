@@ -1,5 +1,5 @@
 
-class AuthorInfoPlugin {
+class InjectDiv {
     constructor(opts) {
         console.log('opt:', opts);
         this.options = opts;
@@ -22,4 +22,4 @@ class AuthorInfoPlugin {
     }
 }
 
-module.exports = AuthorInfoPlugin;
+module.exports = InjectDiv;
