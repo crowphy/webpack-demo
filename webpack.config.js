@@ -46,12 +46,10 @@ module.exports = {
         open: true,
         port: 8080,
         compress: true,
-        // host: ip.address(),
         progress: true,
         historyApiFallback: true,
         contentBase: "./",
         https: false,
-        // proxy: c.prox
     },
     plugins: [
         new WebPlugin({
